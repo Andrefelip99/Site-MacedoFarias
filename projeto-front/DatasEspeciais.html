@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio Especial de Natal 2025 — Macedo Farias Doceria</title>
+
+  <!-- FONTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"/>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff7f2;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    h1,h2,h3 { font-family:'Playfair Display', serif; color:#744d2b; }
+
+    /* NAVBAR */
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:18px 25px; background:#f8e9dd; border-bottom:2px solid #e2c7b2; position:sticky; top:0; z-index:2000; }
+    .logo-bakery { display:flex; align-items:center; gap:10px; }
+    .logo-bakery img { width:55px; border-radius:50%; }
+    .logo-bakery h2 { font-size:26px; font-weight:700; color:#744d2b; }
+    .menu-hamb { font-size:33px; cursor:pointer; color:#744d2b; user-select:none; }
+
+    /* MENU LATERAL */
+    .side-menu { position:fixed; top:0; left:-260px; width:260px; height:100vh; background:#fff; padding-top:70px; display:flex; flex-direction:column; gap:20px; transition:0.3s ease; box-shadow:3px 0 10px rgba(0,0,0,0.3); z-index:3000; }
+    .side-menu.show { left:0; }
+    .side-menu a { padding:12px 25px; text-decoration:none; font-size:18px; font-weight:400; color:#744d2b; }
+    .side-menu a:hover { background:#f4c8a8; color:white; }
+    .btn-close { position:absolute; top:20px; right:20px; font-size:32px; font-weight:bold; cursor:pointer; color:#744d2b; }
+
+    .submenu { display:none; flex-direction:column; padding-left:20px; gap:5px; }
+    .submenu a { font-weight:300; font-size:16px; color:#744d2b; text-decoration:none; }
+    .submenu a:hover { background:#f4c8a8; color:white; }
+
+    /* CONTEÚDO */
+    .wrapper { flex:1; transition:margin-left 0.3s ease; padding:40px 20px; color:#4a2c2a; }
+    h1 { font-size:48px; text-align:center; color:#d48806; font-family:'Dancing Script', cursive; margin-bottom:40px; }
+
+    /* IMAGENS DO CARDÁPIO */
+    #pdfImages img { 
+      width: 100%; 
+      margin-bottom: 20px; 
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* FOOTER */
+    footer { padding:25px; background:#f1d7be; text-align:center; color:#744d2b; font-weight:bold; margin-top:auto; }
+
+    /* RESPONSIVO */
+    @media(max-width:800px){ h1 { font-size:36px; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="menu-hamb" id="btnMenu">☰</div>
+    <div class="logo-bakery">
+      <img src="logo-da-marca.png" alt="Logo">
+      <h2>Macedo Farias</h2>
+    </div>
+  </nav>
+
+  <nav class="side-menu" id="sideMenu">
+    <div class="btn-close" id="btnClose">×</div>
+    <a href="index.html">Início</a>
+    <a href="#" id="cardapioToggle">Cardápio ▼</a>
+    <div class="submenu" id="cardapioSubmenu">
+      <a href="sobremesas.html">Sobremesas</a>
+      <a href="bolo-f.html">Bolos</a>
+      <a href="torta-v.html">Torta de Vitrine</a>
+      <a href="brownie.html">Brownie</a>
+      <a href="slice-c.html">Slice Cake</a>
+    </div>
+    <a href="GaleriaGourmet.html">Galeria Gourmet</a>
+    <a href="contatos.html">Contatos</a>
+    <a href="DatasEspeciais.html">Datas Especiais</a>
+  </nav>
+
+  <div class="wrapper" id="wrapper">
+    <h1>Cardápio Especial de Natal 2025</h1>
+    <div id="pdfImages"></div>
+  </div>
+
+  <footer>
+    Macedo Farias Doceria © 2025
+  </footer>
+
+  <script>
+    // MENU LATERAL
+    const btnMenu = document.getElementById("btnMenu");
+    const btnClose = document.getElementById("btnClose");
+    const sideMenu = document.getElementById("sideMenu");
+    const cardapioToggle = document.getElementById("cardapioToggle");
+    const cardapioSubmenu = document.getElementById("cardapioSubmenu");
+    const wrapper = document.getElementById("wrapper");
+
+    btnMenu.addEventListener("click", () => { sideMenu.classList.toggle("show"); wrapper.classList.toggle("shifted"); });
+    btnClose.addEventListener("click", () => { sideMenu.classList.remove("show"); wrapper.classList.remove("shifted"); });
+    cardapioToggle.addEventListener("click", (e) => { e.preventDefault(); cardapioSubmenu.style.display = cardapioSubmenu.style.display === "flex" ? "none" : "flex"; });
+
+    // EXIBIR IMAGENS DO NATAL
+    const pdfContainer = document.getElementById("pdfImages");
+    const totalPages = 25; // 0 a 24
+    for (let i = 0; i < totalPages; i++) {
+      const img = document.createElement("img");
+      img.src = `imagens/NATAL2025-imagens-${i}.jpg`;
+      img.alt = `Página ${i+1}`;
+      pdfContainer.appendChild(img);
+    }
+  </script>
+</body>
+</html>

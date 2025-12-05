@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria Gourmet — Macedo Farias Doceria</title>
+
+  <!-- FONTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* RESET */
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family:'Poppins', sans-serif;
+      background:#fff7f2;
+      overflow-x:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      color:#4a2c2a;
+    }
+
+    h1,h2,h3 { font-family:'Playfair Display', serif; color:#744d2b; }
+
+    /* NAVBAR */
+    .navbar {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 25px;
+      background:#f8e9dd;
+      border-bottom:2px solid #e2c7b2;
+      position:sticky;
+      top:0;
+      z-index:2000;
+    }
+
+    .logo-bakery {
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .logo-bakery img { width:55px; border-radius:50%; }
+    .logo-bakery h2 { font-size:26px; font-weight:700; color:#744d2b; }
+    .menu-hamb { font-size:33px; cursor:pointer; color:#744d2b; user-select:none; }
+
+    /* MENU LATERAL */
+    .side-menu {
+      position:fixed;
+      top:0;
+      left:-260px;
+      width:260px;
+      height:100vh;
+      background:#fff;
+      padding-top:70px;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+      transition:0.3s ease;
+      box-shadow:3px 0 10px rgba(0,0,0,0.3);
+      z-index:3000;
+    }
+
+    .side-menu.show { left:0; }
+
+    .side-menu a {
+      padding:12px 25px;
+      text-decoration:none;
+      font-size:18px;
+      color:#744d2b;
+      transition:0.3s;
+    }
+
+    .side-menu a:hover { background:#f4c8a8; color:white; }
+
+    .btn-close {
+      position:absolute;
+      top:20px;
+      right:20px;
+      font-size:32px;
+      cursor:pointer;
+      color:#744d2b;
+    }
+
+    .submenu {
+      display:none;
+      flex-direction:column;
+      padding-left:20px;
+      gap:5px;
+    }
+
+    .submenu a { font-weight:300; font-size:16px; color:#744d2b; text-decoration:none; }
+    .submenu a:hover { background:#f4c8a8; color:white; }
+
+    /* WRAPPER */
+    .wrapper { flex:1; transition:margin-left 0.3s ease; padding:40px 20px; }
+
+    /* TÍTULO */
+    .titulo-galeria {
+      text-align:center;
+      margin-top:50px;
+      margin-bottom:25px;
+      font-size:38px;
+      color:#744d2b;
+    }
+
+    /* GALERIA */
+    .galeria {
+      width:90%;
+      margin:0 auto 60px auto;
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:22px;
+    }
+
+    .foto-item {
+      position:relative;
+      border-radius:20px;
+      overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,0.18);
+      transition:transform 0.3s;
+    }
+
+    .foto-item:hover { transform:translateY(-6px); }
+    .foto-item img {
+      width:100%;
+      height:230px;
+      object-fit:cover;
+      display:block;
+      transition:0.3s;
+    }
+    .foto-item:hover img { transform:scale(1.05); }
+
+    /* FOOTER */
+    footer {
+      margin-top:40px;
+      padding:25px;
+      background:#f1d7be;
+      text-align:center;
+      color:#744d2b;
+      font-weight:bold;
+    }
+
+    /* RESPONSIVO */
+    @media(max-width:600px){
+      .foto-item img { height:180px; }
+      .titulo-galeria { font-size:28px; margin-top:30px; margin-bottom:20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="menu-hamb" id="btnMenu">☰</div>
+    <div class="logo-bakery">
+      <img src="logo-da-marca.png" alt="Logo">
+      <h2>Macedo Farias</h2>
+    </div>
+  </div>
+
+  <!-- MENU LATERAL -->
+  <nav class="side-menu" id="sideMenu">
+    <div class="btn-close" id="btnClose">×</div>
+
+    <a href="index.html">Início</a>
+    <a href="#" id="cardapioToggle">Cardápio ▼</a>
+
+    <div class="submenu" id="cardapioSubmenu">
+      <a href="sobremesas.html">Sobremesas</a>
+      <a href="bolo-f.html">Bolos</a>
+      <a href="delicias-pote.html">Delícias no Pote</a>
+      <a href="brownie.html">Brownie</a>
+      <a href="slice-c.html">Slice Cake</a>
+    </div>
+
+    <a href="GaleriaGourmet.html">Galeria Gourmet</a>
+    <a href="contatos.html">Contatos</a>
+    <a href="DatasEspeciais.html">Datas Especiais</a>
+  </nav>
+
+  <!-- WRAPPER -->
+  <div class="wrapper" id="wrapper">
+
+    <!-- TÍTULO -->
+    <h1 class="titulo-galeria">Galeria Gourmet</h1>
+
+    <!-- GALERIA -->
+    <div class="galeria">
+      <div class="foto-item"><img src="fotos/bolo-10.jpeg" alt="Foto 1"></div>
+      <div class="foto-item"><img src="fotos/bolo-4.jpeg" alt="Foto 2"></div>
+      <div class="foto-item"><img src="imagens/torta2.jpeg" alt="Foto 3"></div>
+      <div class="foto-item"><img src="imagens/bolo-1.jpeg" alt="Foto 4"></div>
+      <div class="foto-item"><img src="fotos/sl9.jpeg" alt="Foto 5"></div>
+      <div class="foto-item"><img src="fotos/sl7.jpeg" alt="Foto 6"></div>
+      <div class="foto-item"><img src="fotos/docinho (1).png" alt="Foto 7"></div>
+      <div class="foto-item"><img src="fotos/docinho (2).png" alt="Foto 8"></div>
+      <div class="foto-item"><img src="fotos/pote-chocolate.jpg" alt="Foto 9"></div>
+      <div class="foto-item"><img src="fotos/pote-doce-de-leite.jpg" alt="Foto 10"></div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    Macedo Farias Doceria © 2025
+  </footer>
+
+  <!-- SCRIPT MENU -->
+  <script>
+    const btnMenu = document.getElementById("btnMenu");
+    const btnClose = document.getElementById("btnClose");
+    const sideMenu = document.getElementById("sideMenu");
+    const cardapioToggle = document.getElementById("cardapioToggle");
+    const cardapioSubmenu = document.getElementById("cardapioSubmenu");
+    const wrapper = document.getElementById("wrapper");
+
+    btnMenu.addEventListener("click", () => {
+      sideMenu.classList.toggle("show");
+      wrapper.classList.toggle("shifted");
+    });
+
+    btnClose.addEventListener("click", () => {
+      sideMenu.classList.remove("show");
+      wrapper.classList.remove("shifted");
+    });
+
+    cardapioToggle.addEventListener("click", (e) => {
+      e.preventDefault();
+      cardapioSubmenu.style.display = cardapioSubmenu.style.display === "flex" ? "none" : "flex";
+    });
+  </script>
+
+</body>
+</html>

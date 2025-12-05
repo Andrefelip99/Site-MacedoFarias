@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brownies — Macedo Farias Doceria</title>
+
+  <!-- FONTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"/>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff7f2;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color:#4a2c2a;
+    }
+    h1,h2,h3 { font-family:'Playfair Display', serif; color:#744d2b; }
+
+    /* NAVBAR */
+    .navbar { display:flex; justify-content:space-between; align-items:center; padding:18px 25px; background:#f8e9dd; border-bottom:2px solid #e2c7b2; position:sticky; top:0; z-index:2000; }
+    .logo-bakery { display:flex; align-items:center; gap:10px; }
+    .logo-bakery img { width:55px; border-radius:50%; }
+    .logo-bakery h2 { font-size:26px; font-weight:700; color:#744d2b; }
+    .menu-hamb { font-size:33px; cursor:pointer; color:#744d2b; user-select:none; }
+
+    /* MENU LATERAL */
+    .side-menu { position:fixed; top:0; left:-260px; width:260px; height:100vh; background:#fff; padding-top:70px; display:flex; flex-direction:column; gap:20px; transition:0.3s ease; box-shadow:3px 0 10px rgba(0,0,0,0.3); z-index:3000; }
+    .side-menu.show { left:0; }
+    .side-menu a { padding:12px 25px; text-decoration:none; font-size:18px; font-weight:400; color:#744d2b; }
+    .side-menu a:hover { background:#f4c8a8; color:white; }
+    .btn-close { position:absolute; top:20px; right:20px; font-size:32px; font-weight:bold; cursor:pointer; color:#744d2b; }
+
+    .submenu { display:none; flex-direction:column; padding-left:20px; gap:5px; }
+    .submenu a { font-weight:300; font-size:16px; color:#744d2b; text-decoration:none; }
+    .submenu a:hover { background:#f4c8a8; color:white; }
+
+    /* CONTEÚDO */
+    .wrapper { flex:1; transition:margin-left 0.3s ease; padding:40px 20px; }
+
+    /* TÍTULO PROFISSIONAL */
+    .titulo-profissional {
+      font-size:48px;
+      text-align:center;
+      color:#d48806;
+      font-family:'Dancing Script', cursive;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      display: inline-block;
+      background-color: rgba(255, 220, 180, 0.3);
+      padding: 10px 25px;
+      border-radius: 15px;
+      border-bottom: 3px solid #d48806;
+      margin-bottom: 40px;
+    }
+
+    /* CARDS HORIZONTAIS COM FOTO À ESQUERDA */
+    .galeria { display:flex; flex-direction:column; gap:25px; margin-top:20px; max-width:1000px; margin-left:auto; margin-right:auto; }
+    .card { display:flex; background:#fff; border-radius:15px; overflow:hidden; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:transform 0.3s, box-shadow 0.3s; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 8px 25px rgba(0,0,0,0.2); }
+
+    .card img { width:250px; height:250px; object-fit:cover; border-radius:15px 0 0 15px; }
+    .card-content { padding:20px; display:flex; flex-direction:column; justify-content:center; flex:1; }
+    .card-content h3 { font-size:24px; margin-bottom:10px; color:#d48806; }
+    .card-content p { font-size:16px; margin-bottom:5px; color:#4a2c2a; }
+    .card-content .preco { font-size:18px; font-weight:700; color:#d48806; margin-bottom:15px; }
+    .card-content a { display:inline-block; background:#d48806; color:white; padding:8px 14px; border-radius:8px; text-decoration:none; font-weight:bold; transition:background 0.3s; }
+    .card-content a:hover { background:#b67605; }
+
+    /* FOOTER */
+    footer { padding:25px; background:#f1d7be; text-align:center; color:#744d2b; font-weight:bold; margin-top:auto; }
+
+    /* RESPONSIVO */
+    @media(max-width:800px){
+      .card { flex-direction: row; align-items: center; }
+      .card img { width:100px; height:100px; border-radius:15px 0 0 15px; }
+      .card-content { padding:10px; }
+      .card-content h3 { font-size:18px; }
+      .card-content p, .card-content .preco { font-size:14px; }
+      .card-content a { padding:6px 12px; font-size:14px; }
+      .titulo-profissional { font-size:36px; padding:8px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="menu-hamb" id="btnMenu">☰</div>
+    <div class="logo-bakery">
+      <img src="logo-da-marca.png" alt="Logo">
+      <h2>Macedo Farias</h2>
+    </div>
+  </nav>
+
+  <nav class="side-menu" id="sideMenu">
+    <div class="btn-close" id="btnClose">×</div>
+    <a href="index.html">Início</a>
+    <a href="#" id="cardapioToggle">Cardápio ▼</a>
+    <div class="submenu" id="cardapioSubmenu">
+      <a href="sobremesas.html">Sobremesas</a>
+      <a href="bolo-f.html">Bolos</a>
+      <a href="delicias-pote.html">Delícias no Pote</a>
+      <a href="brownie.html">Brownie</a>
+      <a href="slice-c.html">Slice Cake</a>
+    </div>
+
+    <a href="GaleriaGourmet.html">Galeria Gourmet</a>
+    <a href="contatos.html">Contatos</a>
+    <a href="DatasEspeciais.html">Datas Especiais</a>
+    
+  </nav>
+
+  <div class="wrapper" id="wrapper">
+    <h1 class="titulo-profissional">Brownies</h1>
+    <div class="galeria">
+      <div class="card">
+        <img src="fotos/bronie-brigadeiro.webp" alt="Brownie de Brigadeiro">
+        <div class="card-content">
+          <h3>Brownie de Brigadeiro</h3>
+          <p>Delicioso brownie com recheio de brigadeiro.</p>
+          <p class="preco">R$ 6,00</p>
+          <a href="https://api.whatsapp.com/send?phone=5521982591226" target="_blank">Fazer Pedido</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="fotos/bronie-doce-de-leite.webp" alt="Brownie Doce de Leite">
+        <div class="card-content">
+          <h3>Brownie Doce de Leite</h3>
+          <p>Brownie macio com recheio de doce de leite.</p>
+          <p class="preco">R$ 6,00</p>
+          <a href="https://api.whatsapp.com/send?phone=5521982591226" target="_blank">Fazer Pedido</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="fotos/bronie-de-ninho.webp" alt="Brownie de Ninho">
+        <div class="card-content">
+          <h3>Brownie de Ninho</h3>
+          <p>Brownie com recheio de leite Ninho delicioso.</p>
+          <p class="preco">R$ 6,00</p>
+          <a href="https://api.whatsapp.com/send?phone=5521982591226" target="_blank">Fazer Pedido</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Macedo Farias Doceria © 2025
+  </footer>
+
+  <script>
+    const btnMenu = document.getElementById("btnMenu");
+    const btnClose = document.getElementById("btnClose");
+    const sideMenu = document.getElementById("sideMenu");
+    const cardapioToggle = document.getElementById("cardapioToggle");
+    const cardapioSubmenu = document.getElementById("cardapioSubmenu");
+    const wrapper = document.getElementById("wrapper");
+
+    btnMenu.addEventListener("click", () => { sideMenu.classList.toggle("show"); wrapper.classList.toggle("shifted"); });
+    btnClose.addEventListener("click", () => { sideMenu.classList.remove("show"); wrapper.classList.remove("shifted"); });
+    cardapioToggle.addEventListener("click", (e) => { e.preventDefault(); cardapioSubmenu.style.display = cardapioSubmenu.style.display === "flex" ? "none" : "flex"; });
+  </script>
+</body>
+</html>

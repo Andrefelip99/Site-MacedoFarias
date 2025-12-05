@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Macedo Farias Doceria — Menu Lateral</title>
+
+  <!-- FONTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff7f2;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: #744d2b;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 25px;
+      background: #f8e9dd;
+      border-bottom: 2px solid #e2c7b2;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+    }
+
+    .logo-bakery {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-bakery img {
+      width: 55px;
+      border-radius: 50%;
+    }
+
+    .logo-bakery h2 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #744d2b;
+    }
+
+    .menu-hamb {
+      font-size: 33px;
+      cursor: pointer;
+      color: #744d2b;
+      user-select: none;
+    }
+
+    /* MENU LATERAL */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100vh;
+      background: #fff;
+      padding-top: 70px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: 0.3s ease;
+      box-shadow: 3px 0 10px rgba(0,0,0,0.3);
+      z-index: 3000;
+    }
+
+    .side-menu.show { left: 0; }
+
+    .side-menu a {
+      padding: 12px 25px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 400; /* Submenu com fonte mais fina */
+      color: #744d2b;
+      transition: background 0.3s;
+    }
+
+    .side-menu a:hover {
+      background: #f4c8a8;
+      color: white;
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #744d2b;
+    }
+
+    /* Submenu Cardápio */
+    .sub-menu {
+      display: none;
+      flex-direction: column;
+      padding-left: 15px;
+      gap: 10px;
+    }
+
+    .sub-menu a {
+      font-weight: 300; /* letras mais finas */
+      font-size: 16px;
+    }
+
+    /* HERO */
+    .hero {
+      width: 100%;
+      height: 480px;
+      background: url('imagens/DarkChocolateCake.jpeg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding-left: 80px;
+      color: white;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 500px;
+    }
+
+    .hero-content h1 {
+      font-size: 50px;
+      margin-bottom: 10px;
+      color: #fff3e8;
+    }
+
+    .hero-content p {
+      font-size: 18px;
+      color: #ffe7d5;
+    }
+
+    /* NOSSOS DOCES */
+    .titulo-sessao {
+      text-align: center;
+      margin: 60px 0 30px;
+      font-size: 36px;
+      color: #744d2b;
+    }
+
+    .grid-nossos-doces {
+      width: 90%;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card-doce {
+      background: #fff;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+
+    .card-doce:hover {
+      transform: translateY(-5px);
+    }
+
+    .img-container {
+      position: relative;
+      overflow: hidden;
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+    }
+
+    .img-container img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .card-doce:hover .img-container img {
+      transform: scale(1.05);
+    }
+
+    .botao-hover {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(199,122,59,0.9);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .img-container:hover .botao-hover {
+      opacity: 1;
+    }
+
+    .card-content-doce {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-content-doce h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: #744d2b;
+    }
+
+  
+
+    /* FOOTER */
+    footer {
+      margin-top: 50px;
+      padding: 25px;
+      background: #f1d7be;
+      text-align: center;
+      color: #744d2b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="menu-hamb" id="btnMenu">☰</div>
+    <div class="logo-bakery">
+      <img src="logo-da-marca.png" alt="Logo">
+      <h2>Macedo Farias</h2>
+    </div>
+  </div>
+
+  <!-- MENU LATERAL -->
+  <div class="side-menu" id="sideMenu">
+    <div class="btn-close" id="btnClose">×</div>
+
+    <a href="index.html">Início</a>
+    <a href="#" id="cardapioBtn">Cardápio ▾</a>
+    <div class="sub-menu" id="subMenu">
+        <a href="sobremesas.html">Sobremesas</a>
+      <a href="bolo-f.html">Bolos</a>
+      <a href="delicias-pote.html">Delícias no Pote</a>
+      <a href="brownie.html">Brownie</a>
+      <a href="slice-c.html">Slice Cake</a>
+    </div>
+
+    <a href="GaleriaGourmet.html">Galeria Gourmet</a>
+    <a href="contatos.html">Contatos</a>
+    <a href="DatasEspeciais.html">Datas Especiais</a>
+    </div>
+
+    
+  
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Bem-Vindos ao Macedo Farias Doceria</h1>
+      <p>Doces preparados com amor, qualidade e aquele sabor único que só quem ama confeitar conhece.</p>
+    </div>
+  </section>
+
+  <!-- NOSSOS DOCES -->
+  <h2 class="titulo-sessao">Cardápio</h2>
+  <div class="grid-nossos-doces">
+    <div class="card-doce">
+      <div class="img-container">
+        <img src="fotos/pudim.png" alt="Pudim Tradicional">
+        <a class="botao-hover" href="sobremesas.html">Ver mais</a>
+      </div>
+      <div class="card-content-doce">
+        <h3>Sobremesas</h3>
+        
+      </div>
+    </div>
+
+    <div class="card-doce">
+      <div class="img-container">
+        <img src="imagens/bolo-1.jpeg" alt="Bolos">
+        <a class="botao-hover" href="bolo-f.html">Ver mais</a>
+      </div>
+      <div class="card-content-doce">
+        <h3>Bolos</h3>
+        
+      </div>
+    </div>
+
+    <div class="card-doce">
+      <div class="img-container">
+        <img src="fotos/potes.jpg" alt="Delícias no Pote">
+        <a class="botao-hover" href="delicias-pote.html">Ver mais</a>
+      </div>
+      <div class="card-content-doce">
+        <h3>Delícias no Pote</h3>
+       
+      </div>
+    </div>
+
+    <div class="card-doce">
+      <div class="img-container">
+        <img src="fotos/brownie08.png" alt="Brownie">
+        <a class="botao-hover" href="brownie.html">Ver mais</a>
+      </div>
+      <div class="card-content-doce">
+        <h3>Brownies</h3>
+       
+      </div>
+    </div>
+
+    <div class="card-doce">
+      <div class="img-container">
+        <img src="imagens/slice(padrao).jpeg" alt="Slice Cake">
+        <a class="botao-hover" href="slice-c.html">Ver mais</a>
+      </div>
+      <div class="card-content-doce">
+        <h3>Slice Cake</h3>
+   
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    Macedo Farias Doceria © 2025
+  </footer>
+
+  <!-- SCRIPT MENU -->
+  <script>
+    const btnMenu = document.getElementById("btnMenu");
+    const btnClose = document.getElementById("btnClose");
+    const sideMenu = document.getElementById("sideMenu");
+
+    // Toggle menu lateral
+    btnMenu.addEventListener("click", () => sideMenu.classList.add("show"));
+    btnClose.addEventListener("click", () => sideMenu.classList.remove("show"));
+
+    // Toggle submenu Cardápio
+    const cardapioBtn = document.getElementById("cardapioBtn");
+    const subMenu = document.getElementById("subMenu");
+
+    cardapioBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      subMenu.style.display = subMenu.style.display === "flex" ? "none" : "flex";
+    });
+  </script>
+</body>
+</html>
