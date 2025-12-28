@@ -65,7 +65,7 @@
   ========================== */
   const msg = document.createElement("div");
   msg.className = "msg-ano-novo";
-  msg.innerText = "✨ Macedo Farias deseja a todos vocês um     Feliz Ano Novo ✨";
+  msg.innerText = "✨ A  Macedo Farias deseja a todos vocês um     Feliz Ano Novo ✨";
 
   // =========================
   // Ajuste mobile
