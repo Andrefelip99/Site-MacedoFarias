@@ -1,15 +1,12 @@
 (function () {
-
   const hoje = new Date();
   const dia = hoje.getDate();
   const mes = hoje.getMonth() + 1; // Janeiro = 1, Dezembro = 12
 
   // período ativo: 28/12 até 02/01
-  const periodoAnoNovo =
-    (mes === 12 && dia >= 28) || // Dezembro
-    (mes === 1 && dia <= 2);     // Janeiro
-
+  const periodoAnoNovo = (mes === 12 && dia >= 28) || (mes === 1 && dia <= 2);
   if (!periodoAnoNovo) return;
+
   /* =========================
      CSS
   ========================== */
@@ -37,14 +34,17 @@
       left: 50%;
       transform: translateX(-50%);
       background: rgba(0, 0, 0, 0.75);
-      color: #fff;
+      color: #FFD700; /* dourado */
       padding: 20px 30px;
       border-radius: 16px;
       font-size: 28px;
       font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      text-align: center;
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF, 0 0 30px #FFD700;
       z-index: 10000;
       opacity: 0;
-      animation: aparecer 0.8s forwards, sumir 0.8s forwards 3.5s;
+      animation: aparecer 0.8s forwards, sumir 0.8s forwards 9.2s; /* começa a sumir aos 9.2s */
       pointer-events: none;
     }
 
@@ -65,7 +65,7 @@
   ========================== */
   const msg = document.createElement("div");
   msg.className = "msg-ano-novo";
-  msg.innerText = "✨ A  Macedo Farias deseja a todos vocês um     Feliz Ano Novo ✨";
+  msg.innerText = "✨ A Macedo Farias Deseja a Você um Feliz Ano Novo ✨";
 
   // =========================
   // Ajuste mobile
@@ -84,11 +84,10 @@
 
   ajustarMensagem();
   window.addEventListener("resize", ajustarMensagem);
-
   document.body.appendChild(msg);
 
-  // remove mensagem depois da animação
-  setTimeout(() => msg.remove(), 4500);
+  // remove mensagem depois de 5 segundos
+  setTimeout(() => msg.remove(), 5000);
 
   /* =========================
      Confetes
@@ -99,9 +98,7 @@
     const confete = document.createElement("div");
     confete.className = "confete";
 
-    confete.style.background =
-      cores[Math.floor(Math.random() * cores.length)];
-
+    confete.style.background = cores[Math.floor(Math.random() * cores.length)];
     confete.style.left = Math.random() * 100 + "vw";
     confete.style.animationDuration = 4 + Math.random() * 4 + "s";
     confete.style.animationDelay = Math.random() * 3 + "s";
