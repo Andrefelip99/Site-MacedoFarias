@@ -84,12 +84,12 @@
   </nav>
 
   <div class="wrapper" id="wrapper">
-    <h1>Cardápio Especial de Natal 2025</h1>
+    <h1>Cardápio Especial de Pascoa 2026</h1>
     <div id="pdfImages"></div>
   </div>
 
   <footer>
-    Macedo Farias Doceria © 2025
+    Macedo Farias Doceria © 2026
   </footer>
 
   <script>
@@ -105,13 +105,13 @@
     btnClose.addEventListener("click", () => { sideMenu.classList.remove("show"); wrapper.classList.remove("shifted"); });
     cardapioToggle.addEventListener("click", (e) => { e.preventDefault(); cardapioSubmenu.style.display = cardapioSubmenu.style.display === "flex" ? "none" : "flex"; });
 
-    // EXIBIR IMAGENS DO NATAL
+    // EXIBIR IMAGENS DA PÁSCOA
     const pdfContainer = document.getElementById("pdfImages");
-    const totalPages = 25; // 0 a 24
-    for (let i = 0; i < totalPages; i++) {
+    const totalPages = 4;
+    for (let i = 1; i <= totalPages; i++) {
       const img = document.createElement("img");
-      img.src = `imagens/NATAL2025-imagens-${i}.jpg`;
-      img.alt = `Página ${i+1}`;
+      img.src = `imagens/PASCOA${i}.png`;
+      img.alt = `Foto da Páscoa ${i}`;
       pdfContainer.appendChild(img);
     }
   </script>
