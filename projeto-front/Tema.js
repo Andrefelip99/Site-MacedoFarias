@@ -7,9 +7,7 @@
   const periodoAnoNovo = (mes === 12 && dia >= 28) || (mes === 1 && dia <= 2);
   if (!periodoAnoNovo) return;
 
-  /* =========================
-     CSS
-  ========================== */
+  
   const style = document.createElement("style");
   style.innerHTML = `
     .confete {
