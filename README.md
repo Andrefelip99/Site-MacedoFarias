@@ -1,4 +1,4 @@
-# 🌐 Site Macedo Farias
+# 🌐 Macedo Farias
 
 ## 📋 Sobre o Projeto
 
